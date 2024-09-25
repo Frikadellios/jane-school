@@ -1,0 +1,72 @@
+{
+  "name": "jane-school",
+  "type": "module",
+  "version": "1.0.1",
+  "packageManager": "bun@1.1.26",
+  "private": true,
+  "keywords": ["template", "biomejs", "bun", "typescript", "tailwindcss", "astrojs", "react", "shadcn"],
+  "author": "Hrihorii Ilin <devopsick@pm.me>",
+  "description": "Gift for Jane",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Frikadellios/jane-school.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Frikadellios/jane-school/issues"
+  },
+  "homepage": "https://github.com/Frikadellios/jane-scholl#readme",
+  "engines": {
+    "node": ">=18.19.1 <19 || >=20.17.0 <21 || >=21.1.0"
+  },
+  "scripts": {
+    "editorconfig": "editorconfig-checker -exclude \"**/node_modules/**\"",
+    "browserslist": "bunx update-browserslist-db@latest",
+    "dev": "bunx --bun astro dev --verbose",
+    "start": "bun astro check --verbose && bunx --bun astro dev --verbose",
+    "build": "bunx --bun astro build --verbose",
+    "preview": "bunx --bun astro preview --watch",
+    "astro": "astro",
+    "builder": "conc bun:lint:* && bun astro check --verbose && bunx --bun astro build --verbose",
+    "lint": "conc bun:lint:*",
+    "lint:format": "bunx @biomejs/biome format . --write",
+    "lint:fix": "bunx @biomejs/biome check . --fix",
+    "lint:check": "bunx @biomejs/biome check ./* --write --unsafe"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.1",
+    "@types/bun": "latest",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^22.7.1",
+    "@types/web": "^0.0.165",
+    "@vitejs/plugin-legacy": "^5.4.2",
+    "bun-devtools": "^0.0.2",
+    "bun-types": "^1.1.29",
+    "editorconfig-checker": "^6.0.0",
+    "terser": "^5.33.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/mdx": "^3.1.7",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/ts-plugin": "^1.10.2",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.15.9",
+    "balance-text": "^3.3.1",
+    "caniuse-lite": "^1.0.30001663",
+    "concurrently": "^9.0.1",
+    "date-fns": "^4.1.0",
+    "detect-browser-es": "^0.1.1",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5",
+    "vite": "^5.4.8",
+    "zod": "^3.23.8"
+  },
+  "trustedDependencies": ["@biomejs/biome", "core-js", "esbuild", "sharp"]
+}
