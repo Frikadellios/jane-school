@@ -3,6 +3,28 @@
 @tailwind utilities;
 @layer base {
   :root {
+        --font-family-display: "Days One", "sans-serif";
+
+  --breakpoint-3xl: 1920px;
+
+  --color-brand-background: oklch(88.27% 0.066 359.29);
+
+  --foreground-rgb: oklch(98.3% 0.004 316.6);
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 10, 10, 10;
+  --color-primary-my: oklch(89.33% 0.17190800551761173 165.35314232524098);
+  --color-background-my: oklch(18.67% 0 0);
+  --color-secondary-my: oklch(73.46% 0.185 152.73);
+  --color-background-card: oklch(14.08% 0.004 285.82);
+  --color-neon-yellow: oklch(94.44% 0.194 106.75);
+  --color-neon-pink: oklch(71.7% 0.25 360);
+  --color-neon-lime: oklch(91.5% 0.258 129);
+  --color-neon-cyan: oklch(91.3% 0.139 195.8);
+  --color-emerald-green: oklch(69.59% 0.149 162.48);
+  --color--overlay-blurple: oklch(91.3% 0.139 195.8);
+  --overlay-plurple: oklch(0.5 0.233 303.9 / 0.33);
+  --overlay-blurple: oklch(71.7% 0.25 360 / 10%);
+
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -30,6 +52,28 @@
     --radius: 0.5rem;
   }
   .dark {
+        --font-family-display: "Days One", "sans-serif";
+
+  --breakpoint-3xl: 1920px;
+
+  --color-brand-background: oklch(88.27% 0.066 359.29);
+
+  --foreground-rgb: oklch(98.3% 0.004 316.6);
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 10, 10, 10;
+  --color-primary-my: oklch(89.33% 0.17190800551761173 165.35314232524098);
+  --color-background-my: oklch(18.67% 0 0);
+  --color-secondary-my: oklch(73.46% 0.185 152.73);
+  --color-background-card: oklch(14.08% 0.004 285.82);
+  --neon-yellow: oklch(94.44% 0.194 106.75);
+  --neon-pink: oklch(71.7% 0.25 360);
+  --neon-lime: oklch(91.5% 0.258 129);
+  --neon-cyan: oklch(91.3% 0.139 195.8);
+  --emerald-green: oklch(69.59% 0.149 162.48);
+   --overlay-blurple: oklch(91.3% 0.139 195.8);
+  --overlay-plurple: oklch(0.5 0.233 303.9 / 0.33);
+  --overlay-blurple: oklch(71.7% 0.25 360 / 10%);
+
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -56,11 +100,76 @@
     --chart-5: 340 75% 55%;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .prose code {
+    @apply text-base;
+  }
+
+
+
+
+ body {
+  transition: background-color 0.5s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.days-one-regular {
+  font-family: "Days One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  :root {
+    --velocidad-marquee: 5s;
+  }
+}
+
+@property --tw-outline-style {
+  syntax: "<custom-ident>";
+  inherits: false;
+  initial-value: solid;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
 }

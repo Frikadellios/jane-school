@@ -1,12 +1,16 @@
+import * as path from 'node:path'
+import { defineConfig, passthroughImageService, sharpImageService } from 'astro/config'
+import { loadEnv } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import legacy from '@vitejs/plugin-legacy'
-import { defineConfig } from 'astro/config'
+
 import rehypeExternalLinks from 'rehype-external-links'
 import AutoImport from 'unplugin-auto-import/astro'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
-import path from 'node:path'
 import tailwind from '@astrojs/tailwind'
 import postCssOklabPolyfill from '@csstools/postcss-oklab-function'
 import autoprefixer from 'autoprefixer'
@@ -14,10 +18,32 @@ import cssDiscardComments from 'postcss-discard-comments'
 import tailwindcss from 'tailwindcss'
 import tailwindcssNesting from 'tailwindcss/nesting'
 
+
+import cloudflare from '@astrojs/cloudflare';
+
+
+const ENV = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '')
+const IS_PRODUCTION = ENV.NODE_ENV === 'production'
+
 export default defineConfig({
+  site: ENV.ASTRO_CONFIG_SITE_URL || 'localhost:4321',
   output: 'server',
+  adapter: cloudflare({
+    imageService: 'cloudflare',
+    platformProxy: {
+      enabled: true
+    }
+  }),
   prefetch: {
-    prefetchAll: true
+    prefetchAll: true,
+    defaultStrategy: 'viewport'
+  },
+
+  image: {
+    service: IS_PRODUCTION ? sharpImageService() : passthroughImageService()
+  },
+  experimental: {
+    contentCollectionCache: true
   },
   vite: {
     css: {
@@ -33,12 +59,17 @@ export default defineConfig({
         ]
       }
     },
+    ssr: {
+      external: ['node:buffer', 'three']
+    },
     plugins: [
+      tsconfigPaths(),
       legacy({
         targets: ['defaults', 'not IE 11']
       })
     ]
   },
+
   integrations: [
     tailwind({
       nesting: true,
@@ -57,6 +88,7 @@ export default defineConfig({
     react(),
     mdx()
   ],
+
   markdown: {
     rehypePlugins: [
       [

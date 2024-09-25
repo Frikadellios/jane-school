@@ -1,13 +1,13 @@
 ---
-import '@/styles/tailwind.css'
-import { Button } from '@/components/ui/button'
+
+import { CardSpotlightDemo } from '@/components/card-spot'
+import SpotlightSection from '@/components/SpotlightSection.astro'
+import Layout from '@/layouts/Layout.astro'
+
+
 ---
 
-<html lang="en">
-	<head>
-		<title>Astro</title>
-	</head>
-	<body>
-		<Button>Hello World</Button>
-	</body>
-</html>
+<Layout title="Homepage" description='Homepage Description'>
+    <SpotlightSection client:visible />
+		<CardSpotlightDemo client:visible />
+	</Layout>

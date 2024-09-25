@@ -8,6 +8,7 @@ export {}
 declare global {
   const BotInfo: typeof import('detect-browser-es')['BotInfo']
   const BrowserInfo: typeof import('detect-browser-es')['BrowserInfo']
+  const CanvasCursor: typeof import('./hooks/CanvasCursor.js')['default']
   const HappyDomInfo: typeof import('detect-browser-es')['HappyDomInfo']
   const JSDOMInfo: typeof import('detect-browser-es')['JSDOMInfo']
   const NodeInfo: typeof import('detect-browser-es')['NodeInfo']
